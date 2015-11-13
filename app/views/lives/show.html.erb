@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Width:</strong>
+  <%= @life.width %>
+</p>
+
+<p>
+  <strong>Height:</strong>
+  <%= @life.height %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @life.name %>
+</p>
+
+<div><label>Grid</label>
+  <br />
+  <% @life.height.times do |h| %>
+  	<% @life.width.times do |w| %>
+	  <% cell = @life.cells.where(x: w, y:h).first %>
+		  <% if cell.dead? %>
+			  0
+		  <%else%>
+			  1
+		  <% end %>
+	<% end %>
+  	<br/>
+  <% end %>
+</div>
+<%= link_to 'Cycle', cycle_life_path(@life) %> |
+<%= link_to 'Edit', edit_life_path(@life) %> |
+<%= link_to 'Back', lives_path %>

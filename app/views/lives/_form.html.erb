@@ -1,0 +1,31 @@
+<%= form_for(@life) do |f| %>
+  <% if @life.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@life.errors.count, "error") %> prohibited this life from being saved:</h2>
+
+      <ul>
+      <% @life.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+	<% if @new %>
+  <div class="field">
+    <%= f.label :width %><br>
+    <%= f.number_field :width %>
+  </div>
+
+  <div class="field">
+    <%= f.label :height %><br>
+    <%= f.number_field :height %>
+  </div>
+	<% end %>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
